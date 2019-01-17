@@ -3,10 +3,10 @@ from datetime import datetime
 from TweetObject import TweetObject
 from Utility import Utility
 
-consumer_key = 'GTvnHEwckh5HdjVhCHrXhC5X8'
-consumer_secret = 'YCEnOTJ55Kat9aySMbMnX4IbObiOntPtbEWJlEURatzA6aShLZ'
-access_token = '869602481101254657-B5lPR0aJOSL9LQps6hc3wPdUlRhM2zG'
-access_token_secret = 'XJsm2As76jegYXr3JDfBA7YqGy9fhtEdquDpD1K7xzDwf'
+consumer_key = 'key'
+consumer_secret = 'key'
+access_token = 'key'
+access_token_secret = 'key'
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -25,13 +25,14 @@ def getTwitterPics(hashtag):
                                since=monthAgo.strftime("%Y-%m-%d")).items():
         for media in tweet.entities.get("media", [{}]):
             #Checking if the tweet contains a photo
-            if(media.get("type", None) == "photo"):
-                tweets.append(TweetObject(tweet.text, tweet.retweet_count))
-                print("testing")
+            if(isAPhoto(media)):
+                tweets.append(TweetObject(tweet.text, tweet.retweet_count, tweet.created_at))
 
     #Sort by number of retweets per tweet
     tweets.sort(key=lambda r: r.numRetweets, reverse=True)
 
     for t in tweets:
-        print(t.getText() + " has " + str(t.getRetweets()) + " retweets\n")
+        print(t.getText().encode("utf-8")  + " has " + str(t.getRetweets()).encode("utf-8")  + " retweets and was created on " + str(tweet.getCreatedA().encode("utf-8")) + "\n")
 
+def isAPhoto(media):
+    return media.get("type", None) == "photo"

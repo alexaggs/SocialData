@@ -5,7 +5,7 @@ def main():
     print("Flickr Information")
     getFlickrPics("#dctech")
     print("\nTwitterInformation\n")
-    getTwitterPics("dctech")
+    getTwitterPics("#dctech")
 
 if __name__ == '__main__':
     main()

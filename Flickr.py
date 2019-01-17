@@ -3,8 +3,8 @@ import time
 from datetime import datetime
 from Utility import Utility
 
-key = "9d0358bdb316fb63337122f6d5f8a8a5"
-secret = "6b33cdb8f950b78a"
+key = "key"
+secret = "key"
 
 flickr_api.set_keys(key, secret)
 
@@ -25,4 +25,4 @@ def getFlickrPics(hashtag):
     pics.sort(key=lambda r: r.comments, reverse=True)
 
     for p in pics:
-        print(p.description + " " + str(p.comments))
+        print(p.description.encode("utf-8")  + " " + str(p.comments).encode("utf-8") )
