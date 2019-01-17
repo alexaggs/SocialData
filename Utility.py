@@ -1,3 +1,5 @@
+#Basic utility class to utilize shared methods
+
 from datetime import timedelta
 
 class Utility(object):

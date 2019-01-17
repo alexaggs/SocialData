@@ -1,3 +1,5 @@
+#Retrieves photos within tweets up until the Twitter API limitations
+
 import tweepy
 from datetime import datetime
 from TweetObject import TweetObject

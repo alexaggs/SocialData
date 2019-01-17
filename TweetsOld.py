@@ -1,6 +1,6 @@
 #The purpose of this class is to use code from a GitHub project to obtain tweets from a month ago.
-#This actually is able to complete the requirements, but does not always work because of the Twitter Rate Limits. Also, this s not compatable wth Python 2.7 for some reason
-#so I cant run everything at once
+#This actually is able to complete the requirements, but does not always work because of the Twitter Rate Limits. Also, this s not compatable wth Python 2.7
+#so I cant utilize this
 
 #Code Used: https://github.com/Jefferson-Henrique/GetOldTweets-python
 
