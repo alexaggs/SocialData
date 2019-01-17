@@ -6,8 +6,12 @@
 #Code Used: https://github.com/Jefferson-Henrique/GetOldTweets-python
 
 import GetOldTweets3
+from Utility import Utility
+from datetime import datetime, timedelta
 
-tweetCriteria = GetOldTweets3.manager.TweetCriteria().setQuerySearch("#dctech").setSince("2018-12-16").setUntil("2019-01-16")
+today = datetime.today()
+
+tweetCriteria = GetOldTweets3.manager.TweetCriteria().setQuerySearch("#dctech").setSince(Utility.dateConversion(today, 31).strftime("%Y-%m-%d")).setUntil(today.strftime("%Y-%m-%d"))
 tweet = GetOldTweets3.manager.TweetManager.getTweets(tweetCriteria)
 
 tweet.sort(key=lambda r: r.retweets, reverse=True)
