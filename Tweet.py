@@ -25,14 +25,14 @@ def getTwitterPics(hashtag):
                                since=monthAgo.strftime("%Y-%m-%d")).items():
         for media in tweet.entities.get("media", [{}]):
             #Checking if the tweet contains a photo
-            if(isAPhoto(media)):
+            if(containsPhoto(media)):
                 tweets.append(TweetObject(tweet.text, tweet.retweet_count, tweet.created_at))
 
     #Sort by number of retweets per tweet
     tweets.sort(key=lambda r: r.numRetweets, reverse=True)
 
     for t in tweets:
-        print(t.getText().encode("utf-8")  + " has " + str(t.getRetweets()).encode("utf-8")  + " retweets and was created on " + str(tweet.getCreatedA().encode("utf-8")) + "\n")
+        print(t.getText().encode("utf-8")  + " has " + str(t.getRetweets()).encode("utf-8") + " retweets and was created on " + str(t.getCreatedAt()) + "\n")
 
-def isAPhoto(media):
+def containsPhoto(media):
     return media.get("type", None) == "photo"
