@@ -34,5 +34,12 @@ def getTwitterPics(hashtag):
     for t in tweets:
         print(t.getText().encode("utf-8")  + " has " + str(t.getRetweets()).encode("utf-8") + " retweets and was created on " + str(t.getCreatedAt()) + "\n")
 
+#Used to check if a current tweet contains a photo
 def containsPhoto(media):
     return media.get("type", None) == "photo"
+
+#Used to check if a status contains any sort of media, used for tweets that are not obtained via the Twitter API
+def containsMedia(id):
+    tweet = api.get_status(id).entities
+    if 'media' in tweet:
+        return True
